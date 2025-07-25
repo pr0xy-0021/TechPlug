@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>TechPlug Calgary - Tech Solutions</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+  <style>
+    :root {
+      --primary-blue: #0F4ABF;
+      --secondary-blue: #056ECB;
+      --accent-orange: #FD6F04;
+      --light-gray: #D9D9D9;
+      --dark-text: #333333;
+      --light-text: #FFFFFF;
+      --card-shadow: 0 8px 30px rgba(0,0,0,0.12);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background-color: #f9fbfd;
+      color: var(--dark-text);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 15px;
+    }
+
+    /* Header Styles */
+    header {
+      background: linear-gradient(135deg, var(--primary-blue) 0%, var(--secondary-blue) 100%);
+      color: var(--light-text);
+      padding: 1rem 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    .header-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+    }
+
+    .logo-icon {
+      font-size: 2rem;
+      color: var(--accent-orange);
+      margin-right: 10px;
+    }
+
+    .logo-text {
+      color: var(--light-text);
+      font-size: 1.5rem;
+      font-weight: 700;
+    }
+
+    .logo-text span {
+      color: var(--accent-orange);
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 1.5rem;
+    }
+
+    nav a {
+      color: var(--light-text);
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      padding: 0.5rem 1rem;
+      border-radius: 30px;
+    }
+
+    nav a:hover {
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    /* Hero Form Section */
+    #quote {
+      min-height: 85vh;
+      display: flex;
+      align-items: center;
+      background: linear-gradient(rgba(5, 110, 203, 0.9), rgba(5, 110, 203, 0.9)), 
+                  url('https://images.unsplash.com/photo-1518770660439-4636190af475?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80');
+      background-size: cover;
+      background-position: center;
+      padding: 4rem 0;
+      color: var(--light-text);
+    }
+
+    .form-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 3rem;
+      align-items: center;
+    }
+
+    .form-content {
+      flex: 1;
+      min-width: 300px;
+    }
+
+    .form-content h1 {
+      font-size: 2.8rem;
+      margin-bottom: 1.5rem;
+      line-height: 1.2;
+    }
+
+    .form-content p {
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+      max-width: 600px;
+    }
+
+    .benefits-list {
+      list-style: none;
+      margin: 2rem 0;
+    }
+
+    .benefits-list li {
+      padding: 0.8rem 0;
+      display: flex;
+      align-items: flex-start;
+    }
+
+    .benefit-icon {
+      color: var(--accent-orange);
+      margin-right: 15px;
+      font-size: 1.2rem;
+      min-width: 25px;
+    }
+
+    .form-wrapper {
+      flex: 1;
+      min-width: 300px;
+      background: white;
+      border-radius: 15px;
+      padding: 2.5rem;
+      box-shadow: var(--card-shadow);
+    }
+
+    .form-wrapper h2 {
+      color: var(--primary-blue);
+      margin-bottom: 1.5rem;
+      text-align: center;
+      font-size: 1.8rem;
+    }
+
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+      color: #444;
+    }
+
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 14px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      font-size: 1rem;
+      transition: border 0.3s;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: var(--secondary-blue);
+      box-shadow: 0 0 0 3px rgba(5, 110, 203, 0.1);
+    }
+
+    .form-group textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    button[type="submit"] {
+      display: block;
+      width: 100%;
+      padding: 16px;
+      background: var(--accent-orange);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 5px 15px rgba(253, 111, 4, 0.3);
+    }
+
+    button[type="submit"]:hover {
+      background: #e66500;
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(253, 111, 4, 0.4);
+    }
+
+    /* Services Section */
+    #services {
+      padding: 5rem 0;
+      background-color: var(--light-gray);
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 3rem;
+      color: var(--primary-blue);
+      position: relative;
+    }
+
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -15px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 4px;
+      background: var(--accent-orange);
+      border-radius: 2px;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+    }
+
+    .service-card {
+      background: white;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: var(--card-shadow);
+      transition: all 0.3s ease;
+      border-top: 5px solid var(--secondary-blue);
+      text-align: center;
+      padding: 2rem;
+    }
+
+    .service-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+    }
+
+    .service-icon {
+      font-size: 2.5rem;
+      color: var(--primary-blue);
+      margin-bottom: 1.5rem;
+      display: inline-block;
+      background: rgba(5, 110, 203, 0.1);
+      width: 70px;
+      height: 70px;
+      line-height: 70px;
+      border-radius: 50%;
+    }
+
+    .service-card h3 {
+      color: var(--primary-blue);
+      margin-bottom: 1rem;
+      font-size: 1.4rem;
+    }
+
+    .service-card ul {
+      list-style: none;
+      text-align: left;
+      padding-left: 20px;
+    }
+
+    .service-card li {
+      margin-bottom: 0.8rem;
+      position: relative;
+      padding-left: 25px;
+    }
+
+    .service-card li::before {
+      content: '•';
+      color: var(--accent-orange);
+      font-size: 1.5rem;
+      position: absolute;
+      left: 0;
+      top: -5px;
+    }
+
+    /* Footer with Contact Info */
+    footer {
+      background: var(--primary-blue);
+      color: rgba(255,255,255,0.8);
+      padding: 3rem 0;
+      text-align: center;
+    }
+
+    .footer-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .contact-info {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      justify-content: center;
+      margin: 2rem 0;
+    }
+
+    .contact-method {
+      min-width: 200px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      padding: 1.5rem;
+      background: rgba(255,255,255,0.1);
+      border-radius: 10px;
+      transition: all 0.3s ease;
+    }
+
+    .contact-method:hover {
+      background: rgba(255,255,255,0.15);
+      transform: translateY(-3px);
+    }
+
+    .contact-icon {
+      width: 50px;
+      height: 50px;
+      background: rgba(255,255,255,0.2);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--accent-orange);
+      font-size: 1.3rem;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 1.5rem;
+      margin: 1.5rem 0;
+    }
+
+    .social-link {
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      text-decoration: none;
+      font-size: 1.3rem;
+      transition: all 0.3s ease;
+    }
+
+    .social-link:hover {
+      background: var(--accent-orange);
+      transform: translateY(-5px);
+    }
+
+    .copyright {
+      margin-top: 1.5rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      width: 100%;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .header-container {
+        flex-direction: column;
+        gap: 1rem;
+      }
+      
+      nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      
+      .form-content h1 {
+        font-size: 2.2rem;
+      }
+      
+      .form-container {
+        flex-direction: column;
+      }
+      
+      .form-wrapper {
+        width: 100%;
+      }
+      
+      .contact-info {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .service-card {
+        padding: 1.5rem;
+      }
+      
+      .form-wrapper {
+        padding: 1.5rem;
+      }
+      
+      .contact-method {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="container header-container">
+      <a href="#" class="logo">
+        <div class="logo-icon">🔌</div>
+        <div class="logo-text">Tech<span>Plug</span> Calgary</div>
+      </a>
+    </div>
+  </header>
+
+  <!-- Service Request Section - First Thing Visitors See -->
+  <section id="quote">
+    <div class="container">
+      <div class="form-container">
+        <div class="form-content">
+          <h1>Need Tech Help? Get a Free Quote!</h1>
+          <p>We'll contact you within 15 minutes to discuss your tech needs and provide a solution.</p>
+          
+          <ul class="benefits-list">
+            <li>
+              <div class="benefit-icon">
+                <i class="fas fa-bolt"></i>
+              </div>
+              <div>Fast response - we're local to Calgary</div>
+            </li>
+            <li>
+              <div class="benefit-icon">
+                <i class="fas fa-laptop"></i>
+              </div>
+              <div>Expert tech solutions for homes & businesses</div>
+            </li>
+            <li>
+              <div class="benefit-icon">
+                <i class="fas fa-dollar-sign"></i>
+              </div>
+              <div>No-obligation quotes with transparent pricing</div>
+            </li>
+          </ul>
+        </div>
+        
+        <div class="form-wrapper">
+          <h2>Request Service</h2>
+          <form id="serviceRequestForm">
+            <div class="form-group">
+              <label for="name">Name:</label>
+              <input type="text" id="name" name="name" placeholder="Your name" required>
+            </div>
+            
+            <div class="form-group">
+              <label for="phone">Phone Number:</label>
+              <input type="tel" id="phone" name="phone" placeholder="(403) 123-4567" required>
+            </div>
+            
+            <div class="form-group">
+              <label for="email">Email:</label>
+              <input type="email" id="email" name="email" placeholder="your@email.com" required>
+            </div>
+            
+            <div class="form-group">
+              <label for="problem">What's the issue or upgrade?</label>
+              <textarea id="problem" name="problem" placeholder="Describe your tech issue or desired upgrade..." required></textarea>
+            </div>
+            
+            <button type="submit">Get My Quote</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section id="services">
+    <div class="container">
+      <h2 class="section-title">Our Tech Services</h2>
+      
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-icon">
+            <i class="fas fa-tachometer-alt"></i>
+          </div>
+          <h3>Computer Speed-Up & Upgrades</h3>
+          <ul>
+            <li>Performance optimization</li>
+            <li>Hardware upgrades</li>
+            <li>OS optimization</li>
+            <li>SSD installation</li>
+          </ul>
+        </div>
+        
+        <div class="service-card">
+          <div class="service-icon">
+            <i class="fas fa-shield-virus"></i>
+          </div>
+          <h3>Virus & Malware Removal</h3>
+          <ul>
+            <li>Complete system scans</li>
+            <li>Malware eradication</li>
+            <li>Security setup</li>
+            <li>Data recovery</li>
+          </ul>
+        </div>
+        
+        <div class="service-card">
+          <div class="service-icon">
+            <i class="fas fa-desktop"></i>
+          </div>
+          <h3>Custom PC Building</h3>
+          <ul>
+            <li>Gaming PCs</li>
+            <li>Workstations</li>
+            <li>Home office setups</li>
+            <li>Budget-friendly builds</li>
+          </ul>
+        </div>
+        
+        <div class="service-card">
+          <div class="service-icon">
+            <i class="fas fa-wrench"></i>
+          </div>
+          <h3>On-site Setup & Troubleshooting</h3>
+          <ul>
+            <li>Home network setup</li>
+            <li>Wi-Fi optimization</li>
+            <li>Printer setup</li>
+            <li>Device configuration</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer with Contact Information -->
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="logo">
+          <div class="logo-icon">🔌</div>
+          <div class="logo-text">Tech<span>Plug</span></div>
+        </div>
+        <p>Your local tech experts since 2023</p>
+        
+        <!-- Contact Information -->
+        <div class="contact-info">
+          <div class="contact-method">
+            <div class="contact-icon">
+              <i class="fas fa-phone-alt"></i>
+            </div>
+            <div>
+              <h4>Call Us</h4>
+              <p>(403) 123-4567</p>
+            </div>
+          </div>
+          
+          <div class="contact-method">
+            <div class="contact-icon">
+              <i class="fas fa-envelope"></i>
+            </div>
+            <div>
+              <h4>Email Us</h4>
+              <p>techplugyyc@gmail.com</p>
+            </div>
+          </div>
+          
+          <div class="contact-method">
+            <div class="contact-icon">
+              <i class="fas fa-map-marker-alt"></i>
+            </div>
+            <div>
+              <h4>Location</h4>
+              <p>Serving Calgary & Area</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="social-links">
+          <a href="#" class="social-link">
+            <i class="fab fa-instagram"></i>
+          </a>
+          <a href="#" class="social-link">
+            <i class="fab fa-facebook-f"></i>
+          </a>
+          <a href="#" class="social-link">
+            <i class="fab fa-twitter"></i>
+          </a>
+        </div>
+        
+        <div class="copyright">
+          <p>&copy; 2025 TechPlug Calgary. All rights reserved.</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- EmailJS Form Handling -->
+  <script>
+    // Initialize EmailJS with your public key
+    emailjs.init("mYh65oBTWhkMPqCPV");
+
+    // Form submit handler
+    document.getElementById('serviceRequestForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const submitButton = this.querySelector('button[type="submit"]');
+      submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+      submitButton.disabled = true;
+
+      const templateParams = {
+        name: document.getElementById('name').value,
+        phone: document.getElementById('phone').value,
+        email: document.getElementById('email').value,
+        problem: document.getElementById('problem').value
+      };
+
+      emailjs.send("service_c3s6k47", "template_xxuz6yn", templateParams)
+        .then(function(response) {
+          alert(`Thank you ${templateParams.name}! We'll call you at ${templateParams.phone} within 15 minutes.`);
+          document.getElementById('serviceRequestForm').reset();
+          submitButton.innerHTML = 'Get My Quote';
+          submitButton.disabled = false;
+        }, function(error) {
+          alert("Oops! Something went wrong. Please try again later.");
+          console.error(error);
+          submitButton.innerHTML = 'Get My Quote';
+          submitButton.disabled = false;
+        });
+    });
+  </script>
+</body>
+</html>

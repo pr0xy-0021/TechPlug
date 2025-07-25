@@ -1,0 +1,1016 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechPlug Calgary - Tech Solutions</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@700;800&display=swap">
+    <style>
+        :root {
+            --primary-blue: #0F4ABF;
+            --secondary-blue: #056ECB;
+            --accent-orange: #FD6F04;
+            --light-gray: #D9D9D9;
+            --dark-text: #333333;
+            --light-text: #FFFFFF;
+            --card-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: var(--dark-text);
+            background-color: #f8f9fa;
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        section {
+            padding: 80px 0;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Montserrat', sans-serif;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+        }
+
+        h2 {
+            font-size: 2.8rem;
+            position: relative;
+            display: inline-block;
+            margin-bottom: 3rem;
+            text-align: center;
+            width: 100%;
+        }
+
+        h2:after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 5px;
+            background: var(--accent-orange);
+            border-radius: 5px;
+        }
+
+        p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 14px 32px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            text-align: center;
+            cursor: pointer;
+            font-size: 1rem;
+            border: none;
+        }
+
+        .btn-primary {
+            background: var(--accent-orange);
+            color: var(--light-text);
+            border: 2px solid var(--accent-orange);
+            box-shadow: 0 5px 15px rgba(253, 111, 4, 0.3);
+        }
+
+        .btn-primary:hover {
+            background: #e66500;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(253, 111, 4, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--accent-orange);
+            border: 2px solid var(--accent-orange);
+            margin-left: 15px;
+        }
+
+        .btn-secondary:hover {
+            background: var(--accent-orange);
+            color: var(--light-text);
+            transform: translateY(-3px);
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title h2 {
+            color: var(--primary-blue);
+        }
+
+        /* Header Styles */
+        header {
+            background: var(--primary-blue);
+            padding: 20px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 5px 20px rgba(15, 74, 191, 0.2);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            font-size: 2.8rem;
+            color: var(--accent-orange);
+            margin-right: 12px;
+            animation: pulse 2s infinite;
+        }
+
+        .logo-text {
+            color: var(--light-text);
+            font-size: 1.8rem;
+            font-weight: 700;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .logo-text span {
+            color: var(--accent-orange);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav li {
+            margin-left: 30px;
+        }
+
+        nav a {
+            color: var(--light-text);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+            font-size: 1.1rem;
+        }
+
+        nav a:hover {
+            color: var(--accent-orange);
+        }
+
+        nav a:after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: var(--accent-orange);
+            transition: width 0.3s;
+        }
+
+        nav a:hover:after {
+            width: 100%;
+        }
+
+        .mobile-menu {
+            display: none;
+            font-size: 1.8rem;
+            color: var(--light-text);
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--secondary-blue) 100%);
+            color: var(--light-text);
+            padding: 160px 0 100px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><polygon fill="rgba(255,255,255,0.03)" points="0,100 100,0 100,100"/></svg>');
+            background-size: cover;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: 3.8rem;
+            margin-bottom: 1.5rem;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+
+        .hero p {
+            font-size: 1.4rem;
+            margin-bottom: 2.5rem;
+            opacity: 0.9;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-highlight {
+            color: var(--accent-orange);
+            font-weight: 600;
+        }
+
+        .calgary-badge {
+            display: inline-block;
+            background: rgba(255,255,255,0.15);
+            padding: 8px 20px;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            margin-top: 20px;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .hero-btns {
+            display: flex;
+            justify-content: center;
+            margin-top: 40px;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        /* Services Section */
+        .services {
+            background-color: var(--light-gray);
+            position: relative;
+        }
+
+        .services:before {
+            content: '';
+            position: absolute;
+            top: -100px;
+            left: 0;
+            width: 100%;
+            height: 150px;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><polygon fill="%23D9D9D9" points="0,0 100,100 0,100"/></svg>');
+            background-size: 100% 100%;
+        }
+
+        .services-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .service-card {
+            background: var(--light-text);
+            border-radius: 15px;
+            overflow: hidden;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            box-shadow: var(--card-shadow);
+            text-align: center;
+            padding: 40px 25px;
+            border-top: 5px solid var(--secondary-blue);
+            position: relative;
+            z-index: 2;
+        }
+
+        .service-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .service-icon {
+            font-size: 3.5rem;
+            color: var(--primary-blue);
+            margin-bottom: 25px;
+            height: 80px;
+            width: 80px;
+            line-height: 80px;
+            background: rgba(5, 110, 203, 0.1);
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .service-card h3 {
+            color: var(--primary-blue);
+            font-size: 1.7rem;
+            margin-bottom: 20px;
+        }
+
+        /* Testimonials Section */
+        .testimonials {
+            background: linear-gradient(to bottom, #ffffff 0%, var(--light-gray) 100%);
+            position: relative;
+        }
+
+        .testimonials-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .testimonial-card {
+            background: white;
+            border-radius: 15px;
+            padding: 35px;
+            box-shadow: var(--card-shadow);
+            position: relative;
+            transition: transform 0.3s ease;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .testimonial-card:before {
+            content: '"';
+            position: absolute;
+            top: 20px;
+            left: 25px;
+            font-size: 5rem;
+            color: rgba(5, 110, 203, 0.1);
+            font-family: serif;
+            line-height: 1;
+        }
+
+        .testimonial-content {
+            margin: 30px 0 25px;
+            font-style: italic;
+            font-size: 1.1rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+
+        .author-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-right: 15px;
+            background: var(--secondary-blue);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .author-info h4 {
+            margin-bottom: 5px;
+            color: var(--primary-blue);
+        }
+
+        .rating {
+            color: var(--accent-orange);
+            font-size: 1.1rem;
+            margin-top: 5px;
+        }
+
+        /* Contact Section - Orange Update */
+        .contact {
+            background: linear-gradient(135deg, #FD6F04 0%, #e66500 100%);
+            color: var(--light-text);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><polygon fill="rgba(255,255,255,0.1)" points="0,0 0,100 100,100"/></svg>');
+            background-size: cover;
+        }
+
+        .contact-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 50px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .contact-info {
+            background: rgba(255,255,255,0.15);
+            padding: 40px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .contact-methods {
+            margin-top: 30px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 25px;
+        }
+
+        .contact-icon {
+            font-size: 1.5rem;
+            min-width: 50px;
+            height: 50px;
+            background: rgba(255,255,255,0.25);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 20px;
+            color: white;
+        }
+
+        .contact-details h4 {
+            font-size: 1.3rem;
+            margin-bottom: 5px;
+        }
+
+        .social-links {
+            display: flex;
+            margin-top: 30px;
+        }
+
+        .social-link {
+            width: 50px;
+            height: 50px;
+            background: rgba(255,255,255,0.25);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            transition: all 0.3s ease;
+            font-size: 1.3rem;
+            color: white;
+            text-decoration: none;
+        }
+
+        .social-link:hover {
+            background: var(--primary-blue);
+            transform: translateY(-5px);
+        }
+
+        .contact-form {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: var(--card-shadow);
+        }
+
+        .contact-form h3 {
+            color: var(--primary-blue);
+            margin-bottom: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--dark-text);
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-family: inherit;
+            font-size: 1rem;
+            transition: border 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--secondary-blue);
+            box-shadow: 0 0 0 3px rgba(5, 110, 203, 0.1);
+        }
+
+        .form-group textarea {
+            height: 150px;
+            resize: vertical;
+        }
+        
+        /* Quote Section */
+        .quote-section {
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--secondary-blue) 100%);
+            color: var(--light-text);
+            text-align: center;
+            padding: 80px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .quote-section:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><polygon fill="rgba(255,255,255,0.05)" points="0,0 100,0 0,100"/></svg>');
+            background-size: cover;
+        }
+        
+        .quote-container {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .quote-container h2 {
+            color: white;
+            margin-bottom: 30px;
+        }
+        
+        .quote-container p {
+            font-size: 1.3rem;
+            max-width: 700px;
+            margin: 0 auto 40px;
+        }
+        
+        .quote-btn {
+            display: inline-block;
+            background: var(--accent-orange);
+            color: white;
+            padding: 18px 45px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            border-radius: 50px;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(253, 111, 4, 0.4);
+        }
+        
+        .quote-btn:hover {
+            background: #e66500;
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(253, 111, 4, 0.5);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark-text);
+            color: rgba(255,255,255,0.7);
+            padding: 60px 0 30px;
+            text-align: center;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+
+        .footer-logo .logo-icon {
+            font-size: 2.5rem;
+        }
+
+        .footer-logo .logo-text {
+            font-size: 2rem;
+        }
+
+        .footer-links {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 25px;
+            margin: 30px 0;
+        }
+
+        .footer-links a {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent-orange);
+        }
+
+        .copyright {
+            margin-top: 30px;
+            padding-top: 25px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            width: 100%;
+            font-size: 0.95rem;
+        }
+
+        /* Animations */
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .fade-in.appear {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            h1 {
+                font-size: 3rem;
+            }
+            
+            h2 {
+                font-size: 2.4rem;
+            }
+            
+            .hero {
+                padding: 140px 0 80px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            h2 {
+                font-size: 2rem;
+            }
+            
+            nav ul {
+                display: none;
+            }
+            
+            .mobile-menu {
+                display: block;
+            }
+            
+            .hero-btns {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn-secondary {
+                margin-left: 0;
+                margin-top: 15px;
+            }
+            
+            section {
+                padding: 60px 0;
+            }
+        }
+
+        @media (max-width: 576px) {
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            .hero p {
+                font-size: 1.2rem;
+            }
+            
+            .service-card, .testimonial-card {
+                padding: 30px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <a href="#" class="logo">
+                <div class="logo-icon">🔌</div>
+                <div class="logo-text">Tech<span>Plug</span></div>
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#testimonials">Testimonials</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="#quote">Get Quote</a></li>
+                </ul>
+                <div class="mobile-menu">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Your Local Tech Fixers in <span class="hero-highlight">Calgary</span></h1>
+                <p>We're TechPlug — your local tech fixers and digital plug in Calgary. From speeding up slow computers to building AI-powered websites for barbershops, stores, and small businesses, we got you covered.</p>
+                <p>Whether your PC's acting up, your Wi-Fi's tripping, or you just need a clean, fast website — we pull up, plug in, and power up your tech.</p>
+                <div class="calgary-badge">📍 Serving Calgary</div>
+                <div class="hero-btns">
+                    <a href="tel:4031234567" class="btn btn-primary">
+                        <i class="fas fa-phone-alt"></i> Call (403) 123-4567
+                    </a>
+                    <a href="book.html" class="btn btn-secondary">
+                        <i class="fas fa-envelope"></i> Get a Quote
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Calgary Tech Services</h2>
+                <p>Comprehensive tech solutions for homes and businesses in Calgary</p>
+            </div>
+            <div class="services-container">
+                <div class="service-card fade-in">
+                    <div class="service-icon">
+                        <i class="fas fa-tachometer-alt"></i>
+                    </div>
+                    <h3>Speed Up Slow Computers</h3>
+                    <p>Boost performance by cleaning up your system, removing junk, and upgrading hardware if needed. Get your computer running like new again.</p>
+                </div>
+                <div class="service-card fade-in">
+                    <div class="service-icon">
+                        <i class="fas fa-shield-virus"></i>
+                    </div>
+                    <h3>Virus & Malware Removal</h3>
+                    <p>Get rid of pop-ups, weird errors, and system issues with a full security clean-up. Protect your data and privacy.</p>
+                </div>
+                <div class="service-card fade-in">
+                    <div class="service-icon">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <h3>AI-Powered Website Building</h3>
+                    <p>Fast, modern websites made with AI — perfect for barbershops, small businesses, or personal brands. Get online quickly!</p>
+                </div>
+                <div class="service-card fade-in">
+                    <div class="service-icon">
+                        <i class="fas fa-wifi"></i>
+                    </div>
+                    <h3>Wi-Fi & Network Setup</h3>
+                    <p>Fix slow internet, dead zones, or set up secure networks for your home or business. Enjoy seamless connectivity.</p>
+                </div>
+                <div class="service-card fade-in">
+                    <div class="service-icon">
+                        <i class="fas fa-desktop"></i>
+                    </div>
+                    <h3>Custom PC Builds & Upgrades</h3>
+                    <p>Whether it's gaming or school, we'll build or upgrade the perfect setup for you. Tailored to your needs and budget.</p>
+                </div>
+                <div class="service-card fade-in">
+                    <div class="service-icon">
+                        <i class="fas fa-home"></i>
+                    </div>
+                    <h3>Smart Device Setup</h3>
+                    <p>Need help with smart TVs, Fire Sticks, Alexa, or Google Home? We'll get it all working smoothly. Simplify your smart home.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="testimonials">
+        <div class="container">
+            <div class="section-title">
+                <h2>Calgary Customer Reviews</h2>
+                <p>Hear what our satisfied Calgary clients have to say</p>
+            </div>
+            <div class="testimonials-container">
+                <div class="testimonial-card fade-in">
+                    <div class="testimonial-content">
+                        "TechPlug saved my business! They created an amazing AI-powered website for my barbershop that's brought in so many new customers. Fast, professional, and great value!"
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">MJ</div>
+                        <div class="author-info">
+                            <h4>Mike Johnson</h4>
+                            <div>Owner, Crown Barbershop</div>
+                            <div class="rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card fade-in">
+                    <div class="testimonial-content">
+                        "My laptop was so slow I was ready to replace it. TechPlug cleaned it up and made it faster than when I bought it! I'm amazed at the difference. Will recommend to everyone in Calgary!"
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">SP</div>
+                        <div class="author-info">
+                            <h4>Sarah Peterson</h4>
+                            <div>NW Calgary Resident</div>
+                            <div class="rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card fade-in">
+                    <div class="testimonial-content">
+                        "The team at TechPlug set up my entire home network and smart devices. No more dead zones! They explained everything clearly and were so patient with my questions. Calgary's best tech service!"
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">DK</div>
+                        <div class="author-info">
+                            <h4>David Kim</h4>
+                            <div>SE Calgary Resident</div>
+                            <div class="rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Get Quote Section -->
+    <section id="quote" class="quote-section">
+        <div class="container">
+            <div class="quote-container">
+                <h2>Get a Free Tech Quote Today!</h2>
+                <p>Wondering how much it will cost to fix your tech? Get a no-obligation quote from Calgary's most trusted tech experts. We respond within 24 hours!</p>
+                <a href="book.html" class="quote-btn">
+                    <i class="fas fa-file-invoice"></i> Request Your Quote
+                </a>
+            </div>
+        </div>
+    </section>
+
+    
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <div class="logo-icon">🔌</div>
+                    <div class="logo-text">Tech<span>Plug</span></div>
+                </div>
+                <p>Your local tech fixers and digital plug in Calgary</p>
+                
+                <div class="footer-links">
+                    <a href="#services">Services</a>
+                    <a href="#testimonials">Testimonials</a>
+                    <a href="#contact">Contact</a>
+                    <a href="#quote">Get Quote</a>
+                    <a href="#">Privacy Policy</a>
+                </div>
+                
+                <div class="copyright">
+                    &copy; 2023 TechPlug Calgary. All rights reserved.
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.querySelector('.mobile-menu').addEventListener('click', function() {
+            const nav = document.querySelector('nav ul');
+            nav.style.display = nav.style.display === 'flex' ? 'none' : 'flex';
+        });
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    if(window.innerWidth < 768) {
+                        document.querySelector('nav ul').style.display = 'none';
+                    }
+                }
+            });
+        });
+        
+        // Form submission
+        const contactForm = document.querySelector('.contact-form form');
+        if(contactForm) {
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                alert('Thank you for your message! We will contact you soon.');
+                this.reset();
+            });
+        }
+        
+        // Fade-in animation for elements
+        const fadeElements = document.querySelectorAll('.fade-in');
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('appear');
+                }
+            });
+        }, {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        });
+        
+        fadeElements.forEach(element => {
+            observer.observe(element);
+        });
+    </script>
+</body>
+</html>
